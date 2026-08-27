@@ -1,0 +1,25 @@
+{
+  "name": "emre-tool",
+  "version": "1.0.0",
+  "description": "Emre Tool — Real-time Layer 4 & Layer 7 DDoS protection and reverse-proxy system / Gerçek zamanlı Katman 4 & 7 DDoS koruma ve reverse-proxy sistemi",
+  "author": "Emre Tool",
+  "main": "src/server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test/*.test.js",
+    "target": "node test/target-server.js"
+  },
+  "keywords": ["ddos", "security", "rate-limit", "reverse-proxy", "cybersecurity", "node"],
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2",
+    "http-proxy-middleware": "^3.0.0",
+    "helmet": "^7.1.0",
+    "dotenv": "^16.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

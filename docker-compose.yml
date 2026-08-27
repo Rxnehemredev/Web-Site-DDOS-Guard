@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  ddos-guard:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - TARGET_URL=http://target:3000
+      - RATE_WINDOW_MS=10000
+      - RATE_MAX_REQUESTS=100
+      - CHALLENGE_SECRET=${CHALLENGE_SECRET:-change-this-secret-in-production}
+    depends_on:
+      - target
+    restart: unless-stopped
+
+  # Örnek/test amaçlı korunan backend - kendi uygulamanızla değiştirin
+  target:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./test:/app/test
+    command: node test/target-server.js
+    environment:
+      - TARGET_PORT=3000
